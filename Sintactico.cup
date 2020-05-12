@@ -1,0 +1,57 @@
+import java_cup.runtime.*;
+/* Código del analizador para cambiar la forma en que el analizador informa los errores
+(incluya el número de línea y columna del error). */ 
+parser code {:
+    public void report_error(String message, Object info) {
+        StringBuilder m = new StringBuilder("Error");
+        if (info instanceof java_cup.runtime.Symbol) {
+            java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info); 
+            if (s.left >= 0) {
+                m.append(" en la linea "+(s.left+1)); 
+                if (s.right >= 0)
+                    m.append(", columna "+(s.right+1));
+            }
+        }
+        m.append(" : "+message); 
+        System.err.println(m);
+    }
+
+    public void report_fatal_error(String message, Object info) {
+        report_error(message, info); 
+        System.exit(1);
+    }
+:};
+
+/* ------------Sección de declaración de terminales y no terminales----------- */ 
+/* Terminales (tokens proporcionados por el escaner). */
+terminal SEMI, SUM, RES, MUL, DIV, LP, RP;
+terminal Integer NUM, ID;
+/* Sección de No terminales usados en la gramatica. */
+non terminal Object expr_list, expr_part;
+non terminal Integer expr, factor, term;
+
+/* ---------------------------- Sección de la gramática-------------------- */
+expr_list ::= expr_list expr_part
+    |
+    expr_part; 
+expr_part ::= expr:e
+    SEMI
+    ;
+expr ::= expr:e SUM factor:f
+    |
+    expr:e RES factor:f
+    |
+    factor:f
+    ;
+factor ::= factor:f MUL term:t
+    |
+    factor:f DIV term:t
+    |
+    term:t
+    ;
+term ::= LP expr:e RP
+    |
+    NUM:n
+    |
+    ID:i
+    ;
