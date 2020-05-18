@@ -37,18 +37,28 @@ non terminal Integer expr, factor, term;
 expr_list   ::= expr_list expr_part
             | expr_part
             ; 
-expr_part   ::= expr SEMI
+expr_part   ::= expr:e
+            {: System.out.println("= "+e); :} SEMI
             ;
-expr        ::= expr SUM factor
-            |   expr RES factor
-            |   factor
+expr        ::= expr:e1 SUM factor:e2
+            {: RESULT = new Integer(e1.intValue() + e2.intValue()); :}
+            |   expr:e1 RES factor:e2
+            {: RESULT = new Integer(e1.intValue() - e2.intValue()); :}
+            |   factor:e1
+            {: RESULT = new Integer(e1.intValue()); :}
             ;
-factor      ::= factor MUL term
-            |   factor DIV term
-            |   factor MOD term
-            |   term
+factor      ::= factor:e1 MUL term:e2
+            {: RESULT = new Integer(e1.intValue() * e2.intValue()); :}
+            |   factor:e1 DIV term:e2
+            {: RESULT = new Integer(e1.intValue() / e2.intValue()); :}
+            |   factor:e1 MOD term:e2
+            {: RESULT = new Integer(e1.intValue() % e2.intValue()); :}
+            |   term:e1
+            {: RESULT = new Integer(e1.intValue()); :}
             ;
-term        ::= LP expr RP
-            |   NUM
+term        ::= LP expr:e RP
+            {: RESULT = e; :}
+            |   NUM:n
+            {: RESULT = n; :}
             |   ID
             ;
