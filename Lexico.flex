@@ -30,6 +30,7 @@ dec_int_id = [A-Za-z_][A-Za-z_0-9]*
     "-"             { System.out.print(" - "); return symbol(sym.RES); }
     "*"             { System.out.print(" * "); return symbol(sym.MUL); }
     "/"             { System.out.print(" / "); return symbol(sym.DIV); }
+    "%"             { System.out.print(" % "); return symbol(sym.MOD); }
     "("             { System.out.print(" ( "); return symbol(sym.LP); }
     ")"             { System.out.print(" ) "); return symbol(sym.RP); }
     {dec_int_lit}   { System.out.print(yytext());

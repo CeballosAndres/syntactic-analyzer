@@ -26,7 +26,7 @@ parser code {:
 
 /* ------------Sección de declaración de terminales y no terminales----------- */ 
 /* Terminales (tokens proporcionados por el escaner). */
-terminal SEMI, SUM, RES, MUL, DIV, LP, RP;
+terminal SEMI, SUM, RES, MUL, MOD, DIV, LP, RP;
 terminal Integer NUM, ID;
 
 /* Sección de No terminales usados en la gramatica. */
@@ -45,6 +45,7 @@ expr        ::= expr SUM factor
             ;
 factor      ::= factor MUL term
             |   factor DIV term
+            |   factor MOD term
             |   term
             ;
 term        ::= LP expr RP

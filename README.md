@@ -98,9 +98,7 @@ Todo el proceso de generación del analizador se puede realiza con:
 ```shell
 jflex Lexico.flex \
 && java java_cup.Main < Sintactico.cup \
-&& javac Main.java \
-&& java Main test_pass.txt \
-&& java Main test_fail.txt
+&& javac Main.java
 ```
 
 [Brew]: https://www.brew.sh
