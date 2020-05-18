@@ -1,13 +1,8 @@
-/*
-    Tomado del artículo corto en Linux Gazette por Richard A. Sevenich y
-    Christopher Lopes, titulado "Compiler Construction Tools". Algunas modificaciones por Gerwin Klein
-    Nombre del archivo: Main.java Para Crearlo:
-    Después de crear el escaner lcalc.flex y el parser ycalc.cup, ejecutar
-    > javac Main.java Para correrlo:
-    > java Main test.txt
-    donde test.txt es un archivo de entrada para la calculadora. 
-*/
+/* Código para enlazar el analizador léxico (jflex) y el analizador 
+sintáctico (CUP) */
+
 import java.io.*;
+
 public class Main {
         static public void main(String argv[]) {
         /* Inicia el parser */ 

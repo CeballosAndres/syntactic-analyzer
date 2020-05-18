@@ -69,16 +69,16 @@ Como se mencionó antes, habrá que ubicar la carpeta *java_cup* dentro del dire
 cp -r ~/Downloads/java_cup java_cup
 ```
 
-Generamos el *parser*:
-
-```shell
-jflex Lexico.flex
-```
-
 Indicamos a `java_cup.Main` cual es nuestra declaración de la gramática:
 
 ```shell
 java java_cup.Main < Sintactico.cup
+```
+
+Generamos el *parser*:
+
+```shell
+jflex Lexico.flex
 ```
 
 Compilamos nuestro archivo `Main.java`:
@@ -87,16 +87,10 @@ Compilamos nuestro archivo `Main.java`:
 javac Main.java
 ```
 
-Para verificar el proceso puede ser utilizado el archivo `test_pass.txt` que contiene elementos validos para nuestra gramática:
+Para verificar el proceso pueden ser usados los archivos `*.txt`:
 
 ```shell
-java Main test_pass.txt
-```
-
-De igual manera, podemos ver el resultado de ingresar elementos no validos en `test_fail.txt`:
-
-```shell
-java Main test_fail.txt
+java Main prueba.txt
 ```
 
 Todo el proceso de generación del analizador se puede realiza con:
