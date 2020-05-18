@@ -42,7 +42,7 @@ Todo el proceso se puede realizar con los comandos:
 
 ```shell
 cd ~/Downloads \
-&& curl -o java_cup_v10k.tar.gz https://www.cs.princeton.edu/\~appel/modern/java/CUP/java_cup_v10k.tar.gz
+&& curl -o java_cup_v10k.tar.gz https://www.cs.princeton.edu/\~appel/modern/java/CUP/java_cup_v10k.tar.gz \
 && tar vxf java_cup_v10k.tar.gz \
 && javac java_cup/*.java java_cup/runtime/*.java
 ```
