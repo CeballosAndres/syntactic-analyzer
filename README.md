@@ -3,7 +3,11 @@
 
 Ejemplo para comenzar a utilizar JFlex junto con Cup, para la asignatura de Lenguajes y Autómatas I, del Tecnológico Nacional de México Campus Colima.
 
-## JFlex
+## Dependencias
+
+Es necesario contar previamente con las siguientes instalaciones y dependencias. Se incluye la referencia a
+
+### JFlex
 
 Consultar [https://jflex.de/download.html](https://jflex.de/download.html) dependiendo el sistema operativo para su instalación.
 
@@ -12,6 +16,7 @@ Para **MacOS**, puede ser instalado con [brew](https://www.brew.sh), el cual rea
 ```bash
 brew install jflex
 ```
+
 
 ## Cup
 

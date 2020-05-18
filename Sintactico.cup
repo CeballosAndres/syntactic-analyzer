@@ -1,4 +1,6 @@
+// Especificación CUP para un evaluador de expresiones simple (sin acciones)
 import java_cup.runtime.*;
+
 /* Código del analizador para cambiar la forma en que el analizador informa los errores
 (incluya el número de línea y columna del error). */ 
 parser code {:
@@ -26,32 +28,26 @@ parser code {:
 /* Terminales (tokens proporcionados por el escaner). */
 terminal SEMI, SUM, RES, MUL, DIV, LP, RP;
 terminal Integer NUM, ID;
+
 /* Sección de No terminales usados en la gramatica. */
 non terminal Object expr_list, expr_part;
 non terminal Integer expr, factor, term;
 
 /* ---------------------------- Sección de la gramática-------------------- */
-expr_list ::= expr_list expr_part
-    |
-    expr_part; 
-expr_part ::= expr:e
-    SEMI
-    ;
-expr ::= expr:e SUM factor:f
-    |
-    expr:e RES factor:f
-    |
-    factor:f
-    ;
-factor ::= factor:f MUL term:t
-    |
-    factor:f DIV term:t
-    |
-    term:t
-    ;
-term ::= LP expr:e RP
-    |
-    NUM:n
-    |
-    ID:i
-    ;
+expr_list   ::= expr_list expr_part
+            | expr_part
+            ; 
+expr_part   ::= expr SEMI
+            ;
+expr        ::= expr SUM factor
+            |   expr RES factor
+            |   factor
+            ;
+factor      ::= factor MUL term
+            |   factor DIV term
+            |   term
+            ;
+term        ::= LP expr RP
+            |   NUM
+            |   ID
+            ;
